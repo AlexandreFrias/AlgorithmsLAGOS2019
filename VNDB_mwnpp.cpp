@@ -15,10 +15,6 @@ int index(int j, int i, int n){// mapeia (j,i)--> l permitindo elininação de u
 //início do mergesort
 void Merge( double *A,  double *L, int leftCount, double *R, int rightCount) {
 	int i,j,k;
-
-	// i - to mark the index of left aubarray (L)
-	// j - to mark the index of right sub-raay (R)
-	// k - to mark the index of merged subarray (A)
 	i = 0; j = 0; k =0;
 
 	while(i<leftCount && j< rightCount) {
@@ -29,26 +25,21 @@ void Merge( double *A,  double *L, int leftCount, double *R, int rightCount) {
 	while(j < rightCount) A[k++] = R[j++];
 }
 
-// Recursive function to sort an array of lllegers. 
 void MergeSort( double *A, int n) {
 	int mid,i;
 	 double *L, *R;
-	if(n < 2) return; // base condition. If the array has less than two element, do nothing. 
+	if(n < 2) return; 
+	mid = n/2;
 
-	mid = n/2;  // find the mid index. 
-
-	// create left and right subarrays
-	// mid elements (from index 0 till mid-1) should be part of left sub-array 
-	// and (n-mid) elements (from mid to n-1) will be part of right sub-array
 	L = ( double*)malloc(mid*sizeof( double)); 
 	R = ( double*)malloc((n- mid)*sizeof( double)); 
 	
-	for(i = 0;i<mid;i++) L[i] = A[i]; // creating left subarray
-	for(i = mid;i<n;i++) R[i-mid] = A[i]; // creating right subarray
+	for(i = 0;i<mid;i++) L[i] = A[i]; 
+	for(i = mid;i<n;i++) R[i-mid] = A[i]; 
 
-	MergeSort(L,mid);  // sorting the left subarray
-	MergeSort(R,n-mid);  // sorting the right subarray
-	Merge(A,L,mid,R,n-mid);  // Merging L and R lllo A as sorted list.
+	MergeSort(L,mid);  
+	MergeSort(R,n-mid);  
+	Merge(A,L,mid,R,n-mid);  
     free(L);
     free(R);
 }
@@ -158,7 +149,7 @@ double VNDB(int NumViz, int IterMax, char inst[]) {
 		for(i=0; i<N; i++){
 			y[index(j,i,n)]=0;
 		}
-		double obj=0;
+		double obj;//obj=0
 
 		MergeSort( v, n);
 		LPT(y, obj, n, k, v);
