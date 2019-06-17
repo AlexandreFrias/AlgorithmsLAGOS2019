@@ -187,20 +187,20 @@ double VNDB(int NumViz, int IterMax, char inst[]) {
 			Expr2.end();
 		}
 
-		for(j=2;j<k;j++){
-			for(l=2;l<n-k;l++){
-				IloExpr Expr3(env);
-				for(i=j-1; i<l; i++){
-					Expr3 = Expr3 + x[index(j-1,i,n)];
-				}
-				Expr3=(l-j+1)*Expr3;
-				for(i=j; i<l; i++){
-					Expr3 = Expr3 - x[index(j,i,n)];
-				}
-				modelo.add(Expr3 >= 0);
-				Expr3.end();
-			}
-		}
+		// for(j=2;j<k;j++){
+		// 	for(l=2;l<n-k;l++){
+		// 		IloExpr Expr3(env);
+		// 		for(i=j-1; i<l; i++){
+		// 			Expr3 = Expr3 + x[index(j-1,i,n)];
+		// 		}
+		// 		Expr3=(l-j+1)*Expr3;
+		// 		for(i=j; i<l; i++){
+		// 			Expr3 = Expr3 - x[index(j,i,n)];
+		// 		}
+		// 		modelo.add(Expr3 >= 0);
+		// 		Expr3.end();
+		// 	}
+		// }
 		//================================================================
 		// parametros do solver
 		//================================================================
